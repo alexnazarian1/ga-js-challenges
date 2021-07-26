@@ -35,7 +35,11 @@ addOne(-5) //=> -4
 // Your solution for 01-addOne here:
 
 
+// function addOne(num) {
+//   return num + 1
+// }
 
+// console.log(addOne(-5))
 
 
 /*-----------------------------------------------------------------
@@ -57,9 +61,11 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
+// function addTwoNumbers(num1, num2) {
+//   return num1 + num2
+// }
 
-
-
+// console.log(addTwoNumbers(9, 89))
 
 /*-----------------------------------------------------------------
 Challenge: 03-sumNumbers
@@ -80,9 +86,11 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
+// function sumNumbers(nums) {
+//   return nums.reduce((sum, num) => sum += num, 0)
+// }
 
-
-
+// console.log(sumNumbers([5,6,7,8]))
 
 /*-----------------------------------------------------------------
 Challenge: 04-addList
@@ -104,8 +112,19 @@ add(7,-12) //=> -5
 // Your solution for 04-addList here:
 
 
+// function addList(nums) {
+//   if (nums === null) {
+//     return 0;
+//   } else {
+//     let sum = 0;
+//     for (let i=0; i <arguments.length; i++) {
+//       sum += arguments[i]
+//     }
+//     return sum;
+//   }
+// }
 
-
+// console.log(addList(2.5, 68, 10000));
 
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
@@ -128,8 +147,18 @@ computeRemainder(10.5, 3) //=> 1.5
 // Your solution for 05-computeRemainder:
 
 
+function computeRemainder(dividend,divisor) {
+  if (divisor === 0) {
+    return 'Infinity'
+  } else {
+    let quotient = dividend / divisor;
+    let dec = quotient - Math.trunc(quotient)
+    let remainder = Math.round(divisor * dec);
+    return remainder;
+  }
+}
 
-
+// console.log(computeRemainder(4, 3));
 
 /*-----------------------------------------------------------------
 Challenge: 06-range
@@ -150,8 +179,20 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
+function range(num1, num2) {
+  if ( num1 >= num2 ) {
+    return "First argument must be less than second";
+  } else {
+    //create empty array
+    let rangeArray = [num1];
+    for (let i = (num1+1); i < num2; i++) {
+      rangeArray.push(i);
+    }
+    return rangeArray;
+  }
+}
 
-
+// console.log(range(1,10))
 
 
 /*-----------------------------------------------------------------
@@ -170,7 +211,17 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 // Your solution for 07-reverseUpcaseString here:
 
 
+function reverseUpcaseString(string) {
+  // separate out the string into individual characters
+  const stringArr = string.split("");
+  // reverse the characters
+  const reverseArr = stringArr.reverse();
+  // concatinate characters
+  const reverseString = reverseArr.join('')
+  return reverseString;
+}
 
+// console.log(reverseUpcaseString('Dick Shitter!!!'))
 
 
 /*-----------------------------------------------------------------
@@ -190,8 +241,16 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
+function removeEnds(str) {
+  if (str.length <= 3) {
+    return 'empty string';
+  } else {
+    str = str.slice(1, -1);
+    return str
+  }
+}
 
-
+// console.log(removeEnds("shitty"))
 
 
 /*-----------------------------------------------------------------
@@ -213,9 +272,21 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
+function charCount(str) {
+  str = str.split('')
+  let counts = {}
 
+  for (let i = 0; i < str.length; i++) {
+    if (counts[str[i]]) {
+      counts [str[i]] += 1;
+    } else {
+      counts [str[i]] = 1
+    }
+  }
+  return counts;
+}
 
-
+// console.log(charCount("shit fuck this is a stupid one!? JK I KNOW IT'S FUCKING STUPID"))
 
 /*-----------------------------------------------------------------
 Challenge: 10-formatWithPadding
@@ -239,9 +310,29 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
+// function formatWithPadding(int, str, num) {
+//   if (int.toString().length >= num) {
+//     return int.toString();
+//   } else {
+//     // return 'str' * num
+//     // replace last characters in returned string by int.length with 'int'
 
+//     intArr = int.toString().split('')
+//     strArr = str.repeat(num).split('')
+//     for (let i = 0; i < intArr.length; i++) {
+//       strArr.pop();
+//     }
+//     for (let i = 0; i < intArr.length; i++) {
+//       strArr.push(intArr[i])
+//     }
+//     paddedArg = strArr.join('')
+    
 
+//     return paddedArg;
+//   }
+// }
 
+// console.log(formatWithPadding(12345, '*', 10))
 
 /*-----------------------------------------------------------------
 Challenge: 11-isPalindrome
@@ -290,8 +381,26 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
+function hammingDistance(str1, str2) {
+  // if strings are not the same length, return NaN
+    if (str1.length !== str2.length) {
+      return NaN;
+    } else {
+      // convert strings into arrays
+       let arr1 = str1.split("");
+       let arr2 = str2.split("");
+       let distance = 0;
+      // loop through arrays and compare characters
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+          distance += 1;
+        }
+      }
+      return distance;
+    }
+}
 
-
+console.log(hammingDistance('cack', 'bawl'))
 
 
 /*-----------------------------------------------------------------
